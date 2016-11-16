@@ -1,0 +1,6 @@
+sqlalchemy
+Pandas
+scipy
+numpy
+matplotlib
+Django>=1.8,<1.9
