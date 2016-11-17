@@ -2,13 +2,16 @@ from django.db import models
 
 
 class Node(models.Model):
-    name = models.TextField(max_length=255)
+    name = models.TextField(max_length=255, unique=True)
     latitude = models.FloatField()
     longitude = models.FloatField()
 
     class Meta:
         verbose_name = "Camera Node"
         verbose_name_plural = "Camera Nodes"
+
+    def __unicode__(self):
+        return self.name
 
 
 class Event(models.Model):
@@ -18,6 +21,10 @@ class Event(models.Model):
     class Meta:
         verbose_name = "Bolide Event"
         verbose_name_plural = "Bolide Events"
+
+    def __unicode__(self):
+        name = self.node.name + ': ' + str(self.event_date)
+        return name
 
 
 class EventData(models.Model):
