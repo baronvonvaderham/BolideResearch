@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'bolide-data-manager',
+    'trajectory-calculator',
 )
 
 MIDDLEWARE_CLASSES = (

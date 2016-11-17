@@ -116,9 +116,20 @@ class DeleteEventView(DeleteView):
         Generic DeleteView for deleting an Event
         and its associated EventData objects
     """
-    model = Node
+    model = Event
     template_name = 'confirm_event_delete.html'
     success_url = '/event_list/'
 
     def get_object(self, **kwargs):
         return Node.objects.get(id=self.kwargs['event_id'])
+
+class EventListView(ListView):
+    """
+        Generic ListView to display the list of all existing Events
+    """
+    model = Event
+    template_name = 'event_list.html'
+    context_object_name = 'event_list'
+
+    def get_queryset(self):
+        return Event.objects.all().order_by('event_date')
